@@ -1,0 +1,55 @@
+<div class="box">
+  <div class="box-header with-border">
+    <h3 class="box-title">
+      <a href="#/add"><button class='btn btn-primary'>添加 <span class="fa fa-plus"></span></button></a>
+    </h3>
+    <div class="box-tools">
+      <div class="input-group input-group-sm" style="width: 150px;">
+        <input type="text" name="table_search" id="search" class="form-control pull-right" placeholder="输入演出名称">
+
+        <div class="input-group-btn">
+          <button type="submit" id="searchSubmit" class="btn btn-default"><i class="fa fa-search"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.box-header -->
+  <div class="box-body">
+    <table class="table table-bordered">
+      <tr style="font-size: 13px;">
+        <th style="width: 10px;text-align: center;">#</th>
+        <th style="width: 78px;text-align: center;">演出海报</th>
+        <th style="width: 24%;text-align: center;">演出名称</th>
+        <th style="width: 12%;text-align: center;">演出场地</th>
+        <th style="width: 11%;text-align: center;">演出时间</th>
+        <th style="width: 88px;text-align: center;">售价</th>
+        <th style="width: 68px;text-align: center;">售票状态</th>
+        <th style="text-align: center;">操作</th>
+      </tr>
+      {{if hasResult}}
+        {{each data}}
+        <tr style="font-family:微软雅黑;font-size: 12px;text-align: center;">
+          <td>{{$index+1}}.</td>
+          <td><img src="http://localhost:3000/uploads/{{$value.showPic}}" style="width: 50px; height: 50px; margin-top: 15px;" alt=""></td>
+          <td style="font-size: 13px;padding-top: 25px;">{{$value.showName}}</td>
+          <td style="font-size: 11px;line-height: 76px;">{{$value.showLocal}}</td>
+          <td style="font-size: 11px;line-height: 76px;">{{$value.showTime}}</td>
+          <td style="line-height: 76px; font-weight: bold;color: red">￥{{$value.showPrice}}</td>
+          <td style="line-height: 76px;">{{$value.showStates}}</td>
+          <td style="line-height: 76px;">
+            <a href="#/edit/{{$value._id}}|{{pageno}}"><button class="btn btn-info" style="width: 50px; font-size: 12px; padding: 6px ;background: green;">编辑 <span class="fa fa-edit"></span></button></a>
+            <button class="btn btn-danger" id="{{$value._id}}" style="width: 50px; font-size: 12px; padding: 6px ;" >删除 <span class="fa fa-remove"></span></button>
+          </td>
+        </tr>
+        {{/each}}
+      {{else}}
+        <tr><td colspan="8">没有找到符合条件的文档。</td></tr>
+      {{/if}}
+    </table>
+  </div>
+  <!-- /.box-body -->
+  <div class="box-footer clearfix" id="pagination">
+
+  </div>
+</div>
+<!-- /.box -->

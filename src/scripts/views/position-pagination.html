@@ -1,0 +1,11 @@
+<ul class="pagination pagination-sm no-margin pull-right">
+  <li><a href="#/newslist/0">&laquo;</a></li>
+  <% for (var i = 0; i < pagecount; i++) { %>
+    {{if i == pageno}}
+      <li class="active"><a href="#/newslist/{{i}}">{{i+1}}</a></li>
+    {{else}}
+      <li><a href="#/newslist/{{i}}">{{i+1}}</a></li>
+    {{/if}}
+  <% } %>
+  <li><a href="#/newslist/{{pagecount-1}}">&raquo;</a></li>
+</ul>
